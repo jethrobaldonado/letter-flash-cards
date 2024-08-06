@@ -5,7 +5,7 @@ import {JackInTheBox} from "react-awesome-reveal";
 function App() {
   const [currentLetter, setCurrentLetter] = useState(Math.floor(Math.random() * 26) + 65);
   const [trigger, setTrigger] = useState(false);
-  const keyDownHandler = useCallback((event) => {
+  const keyDownHandler = useCallback((event: KeyboardEvent) => {
     if (event.keyCode === 32) {
       const randNumber = Math.floor(Math.random() * 26) + 65;
       setCurrentLetter(randNumber);
@@ -22,7 +22,7 @@ function App() {
   }, [keyDownHandler, trigger]);
 
   return (
-    <JackInTheBox key={trigger} duration={2000}>
+    <JackInTheBox key={trigger ? 'open' : 'close'} duration={2000}>
       <div style={{
         border: '12px solid #000000',
         borderRadius: '20px',
