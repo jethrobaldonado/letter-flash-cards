@@ -1,17 +1,17 @@
-import {useEffect, useRef, useState} from 'react'
+import {useCallback, useEffect, useState} from 'react'
 import './App.css'
 import {JackInTheBox} from "react-awesome-reveal";
 
 function App() {
-  const [currentLetter, setCurrentLetter] = useState(null);
+  const [currentLetter, setCurrentLetter] = useState(Math.floor(Math.random() * 26) + 65);
   const [trigger, setTrigger] = useState(false);
-  const keyDownHandler = (event) => {
+  const keyDownHandler = useCallback((event) => {
     if (event.keyCode === 32) {
       const randNumber = Math.floor(Math.random() * 26) + 65;
       setCurrentLetter(randNumber);
       setTrigger(!trigger);
     }
-  }
+  }, [trigger]);
 
   useEffect(() => {
     document.addEventListener('keydown', keyDownHandler);
@@ -19,7 +19,7 @@ function App() {
     return () => {
       document.removeEventListener('keydown', keyDownHandler);
     }
-  }, [trigger]);
+  }, [keyDownHandler, trigger]);
 
   return (
     <JackInTheBox key={trigger} duration={2000}>
