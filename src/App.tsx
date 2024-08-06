@@ -5,7 +5,8 @@ import {JackInTheBox} from "react-awesome-reveal";
 function App() {
   const [currentLetter, setCurrentLetter] = useState(Math.floor(Math.random() * 26) + 65);
   const [trigger, setTrigger] = useState(false);
-
+  const { innerWidth: width, innerHeight: height } = window;
+  const isMobile = width < height;
   const handler = useCallback(() => {
     const randNumber = Math.floor(Math.random() * 26) + 65;
     setCurrentLetter(randNumber);
@@ -37,7 +38,7 @@ function App() {
           border: '12px solid #000000',
           borderRadius: '20px',
           height: '80vh',
-          width: '40vw',
+          width: isMobile ? '80vw' : '40vw',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
