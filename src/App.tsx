@@ -8,7 +8,7 @@ function App() {
   const [trigger, setTrigger] = useState(false);
   const {innerWidth: width, innerHeight: height} = window;
   const isMobile = width < height;
-  const validateNumber = (currentNumber: number) => {
+  const validateNumber = useCallback((currentNumber: number) => {
     let newNumber = currentNumber;
     if (previousLetters.indexOf(currentNumber) > -1) {
       newNumber = validateNumber(Math.floor(Math.random() * 26) + 65);
@@ -22,20 +22,19 @@ function App() {
       }
     }
     return newNumber;
-  }
+  }, [previousLetters]);
   const handler = useCallback(() => {
     const randNumber = () => Math.floor(Math.random() * 26) + 65;
     const currentNumber = validateNumber(randNumber());
     setCurrentLetter(currentNumber);
-    console.log()
     setTrigger(!trigger);
-  }, [trigger]);
+  }, [trigger, validateNumber]);
 
   const keyDownHandler = useCallback((event: KeyboardEvent) => {
     if (event.keyCode === 32) {
       handler();
     }
-  }, [trigger]);
+  }, [handler]);
   const handleClick = () => {
     handler();
   }
