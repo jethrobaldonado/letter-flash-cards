@@ -1,5 +1,6 @@
 body {
   background: #cccccc;
+  font-family: 'Courier 10 Pitch';
 }
 #root {
   max-width: 1280px;
