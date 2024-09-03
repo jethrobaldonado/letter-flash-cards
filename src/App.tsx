@@ -57,7 +57,7 @@ function App() {
           border: '12px solid #000000',
           borderRadius: '20px',
           height: '80vh',
-          width: isMobile ? '80vw' : '40vw',
+          width: isMobile ? '80dvw' : '40dvw',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
