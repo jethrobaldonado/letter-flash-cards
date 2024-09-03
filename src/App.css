@@ -1,6 +1,6 @@
 body {
   background: #cccccc;
-  font-family: 'Courier 10 Pitch';
+  font-family: 'Arial';
 }
 #root {
   max-width: 1280px;
@@ -39,6 +39,7 @@ body {
 
 .card {
   padding: 2em;
+  text-transform: lowercase;
 }
 
 .read-the-docs {

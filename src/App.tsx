@@ -5,6 +5,7 @@ import {JackInTheBox} from "react-awesome-reveal";
 function App() {
   const [currentLetter, setCurrentLetter] = useState(Math.floor(Math.random() * 26) + 65);
   const [previousLetters, setPreviousLetters] = useState<number[]>([]);
+  const [currentCase, setCurrentCase] = useState<number>(1);
   const [trigger, setTrigger] = useState(false);
   const {innerWidth: width, innerHeight: height} = window;
   const isMobile = width < height;
@@ -25,6 +26,7 @@ function App() {
   }, [previousLetters]);
   const handler = useCallback(() => {
     const randNumber = () => Math.floor(Math.random() * 26) + 65;
+    setCurrentCase(Math.floor(Math.random() * 2));
     const currentNumber = validateNumber(randNumber());
     setCurrentLetter(currentNumber);
     setTrigger(!trigger);
@@ -62,7 +64,7 @@ function App() {
           background: '#EEEEEE',
         }}
       >
-        <h1>{String.fromCharCode(currentLetter)}</h1>
+        <h1 style={{ textTransform: currentCase ? 'lowercase' : 'uppercase' }}>{String.fromCharCode(currentLetter)}</h1>
       </div>
     </JackInTheBox>
   )
