@@ -10,8 +10,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['vite.svg', 'abc.webp'], // Add other assets if needed
       manifest: {
-        name: 'My React PWA',
-        short_name: 'ReactPWA',
+        name: 'Letter Flash Card',
+        short_name: 'Flash Cards',
         description: 'My Progressive Web App using Vite and React',
         theme_color: '#ffffff',
         icons: [
