@@ -64,7 +64,8 @@ function App() {
           background: '#EEEEEE',
         }}
       >
-        <h1 style={{ textTransform: currentCase ? 'lowercase' : 'uppercase' }}>{String.fromCharCode(currentLetter)}</h1>
+        <h1 style={{textTransform: 'uppercase', display: 'flex'}}>{String.fromCharCode(currentLetter)}</h1>
+        <h1 style={{textTransform: 'lowercase', display: 'flex'}}>{String.fromCharCode(currentLetter)}</h1>
       </div>
     </JackInTheBox>
   )
